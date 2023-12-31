@@ -48,10 +48,7 @@ const NewsComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiKey = "916f66436b7a40628cff34a468490a02";
-        const response = await fetch(
-          `https://newsapi.org/v2/everything?q=keyword&apiKey=${apiKey}`
-        );
+        const response = await fetch(`api/headlines`);
         const data = await response.json();
 
         setNewsData(data.articles);
@@ -71,7 +68,7 @@ const NewsComponent = () => {
         <p>Loading...</p>
       ) : (
         <div>
-          <h1 className="text-4xl p-4 text-center">News Headlines</h1>
+          <h1 className="text-4xl p-4 text-c">News Headlines</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {newsData.map((article, index) => (
               <NewsCard key={index} article={article} />
