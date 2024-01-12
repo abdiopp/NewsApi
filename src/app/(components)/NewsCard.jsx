@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const NewsCard = ({ article }) => (
@@ -23,6 +24,19 @@ const NewsCard = ({ article }) => (
       <p className="text-gray-500 text-sm">
         Published on: {article.publishedAt}
       </p>
+
+      {/* img */}
+      <img
+        src={
+          article.urlToImage
+            ? article.urlToImage
+            : `https://placehold.co/600x400`
+        }
+        alt="sample image"
+        unoptimized
+        width={600}
+        height={400}
+      />
 
       {/* Read More Link */}
       <a
