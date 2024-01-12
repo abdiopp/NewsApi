@@ -58,12 +58,13 @@ const NewsComponent = () => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const searchParams =
+    "everything?q=bitcoin&apiKey=916f66436b7a40628cff34a468490a02";
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `api/get?everything?q=bitcoin&apiKey=916f66436b7a40628cff34a468490a02`
-        );
+        const response = await fetch(`api/get?${searchParams}`);
         const data = await response.json();
 
         setNewsData(data.articles);
