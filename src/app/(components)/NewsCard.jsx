@@ -63,20 +63,47 @@ const NewsComponent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const searchParams =
+        "everything?q=bitcoin&apiKey=916f66436b7a40628cff34a468490a02";
+
       try {
-        const response = await fetch(`api/get?${searchParams}`);
+        const response = await fetch(`api/get`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            searchParams,
+          }),
+        });
         const data = await response.json();
 
         setNewsData(data.articles);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
+        console.error("Error :", error);
       }
     };
 
     fetchData();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(`api/get?${searchParams}`);
+  //       const data = await response.json();
+
+  //       setNewsData(data.articles);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   return (
     <div>
