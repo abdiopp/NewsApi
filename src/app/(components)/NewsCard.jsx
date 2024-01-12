@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const NewsCard = ({ article }) => (
@@ -62,7 +61,9 @@ const NewsComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`api/headlines`);
+        const response = await fetch(
+          `api/get?everything?q=bitcoin&apiKey=916f66436b7a40628cff34a468490a02`
+        );
         const data = await response.json();
 
         setNewsData(data.articles);
@@ -74,7 +75,7 @@ const NewsComponent = () => {
     };
 
     fetchData();
-  }, []); // The empty dependency array ensures that this effect runs only once, similar to componentDidMount
+  }, []);
 
   return (
     <div>
