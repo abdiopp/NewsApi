@@ -65,7 +65,6 @@ const NewsComponent = () => {
     const fetchData = async () => {
       const searchParams =
         "everything?q=bitcoin&apiKey=916f66436b7a40628cff34a468490a02";
-
       try {
         const response = await fetch(`api/get`, {
           method: "POST",
